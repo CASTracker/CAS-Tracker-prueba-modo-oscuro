@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ==================== */
+/* Tema claro (default) */
+/* ==================== */
+:root{
+  --bg: #f4f7fb;
+  --bg-2: #eef4fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #0077b6;
+  --primary-2: #0096c7;
+  --accent: #90e0ef;
+  --danger: #ff4c4c;
+  --border: #e6e9ef;
+  --radius: 12px;
+  --shadow: 0 8px 20px rgba(15,23,42,0.08);
+}
+
+/* ==================== */
+/* Tema oscuro */
+/* ==================== */
+body.dark {
+  --bg: #0f172a;
+  --bg-2: #020617;
+  --card: #020617;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #38bdf8;
+  --primary-2: #0ea5e9;
+  --accent: #22d3ee;
+  --danger: #ef4444;
+  --border: #1e293b;
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+/* ==================== */
+/* Base */
+/* ==================== */
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body {
+  font-family: 'Poppins', system-ui, Arial;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), var(--bg-2) 120%);
+  color: var(--text);
+  line-height: 1.4;
+  transition: background .25s ease, color .25s ease;
+}
+
+/* ==================== */
+/* Header */
+/* ==================== */
+header {
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: #fff;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+nav {
+  margin-top: .6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Botón modo oscuro */
+#themeToggle {
+  background: rgba(255,255,255,.18);
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ==================== */
+/* Main */
+/* ==================== */
+main {
+  max-width: 980px;
+  margin: 2rem auto;
+  padding: 1.25rem;
+}
+
+/* Cards */
+.cards {
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:1rem;
+  margin-top:1rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding:1rem;
+  box-shadow: var(--shadow);
+}
+
+.card h3 { color: var(--primary); margin-bottom:.4rem; }
+
+/* Formularios */
+.formulario {
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+}
+
+input, select, textarea {
+  padding:.8rem;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline:none;
+  border-color: var(--primary);
+}
+
+/* Botones */
+button, .btn {
+  padding:.6rem .9rem;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.btn {
+  background: var(--primary);
+  color:white;
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+/* Tablas */
+table {
+  width:100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding:.9rem;
+  border-bottom:1px solid var(--border);
+}
+
+thead th {
+  color: var(--muted);
+}
+
+/* Reflexiones */
+.reflexion {
+  background: var(--card);
+  padding:1rem;
+  border-radius:10px;
+  box-shadow: var(--shadow);
+}
+
+/* Footer */
+.site-footer {
+  text-align:center;
+  color: var(--muted);
+  padding:1.25rem 0;
+  margin-top:2rem;
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .cards{grid-template-columns:1fr}
+}
