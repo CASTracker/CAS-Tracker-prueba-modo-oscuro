@@ -421,3 +421,23 @@ document.getElementById("exportWord")?.addEventListener("click", async () => {
   const blob = await Packer.toBlob(doc);
   saveAs(blob, "Reflexiones.docx");
 });
+
+// ========= MODO OSCURO =========
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    if (btn) btn.textContent = "☀️";
+  }
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      btn.textContent = isDark ? "☀️" : "🌙";
+    });
+  }
+});
