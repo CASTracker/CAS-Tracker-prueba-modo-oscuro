@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAS Tracker - Horario Semanal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Horario Semanal CAS</h1>
+    <nav>
+      <a href="menu.html">Inicio</a>
+      <a href="actividades.html">Actividades</a>
+      <a href="reflexiones.html">Reflexiones</a>
+      <a href="horario.html">Horario</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Organiza tu Semana CAS</h2>
+      <table id="tablaHorario">
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Actividad Planeada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lunes</td><td contenteditable="true"></td></tr>
+          <tr><td>Martes</td><td contenteditable="true"></td></tr>
+          <tr><td>Miércoles</td><td contenteditable="true"></td></tr>
+          <tr><td>Jueves</td><td contenteditable="true"></td></tr>
+          <tr><td>Viernes</td><td contenteditable="true"></td></tr>
+          <tr><td>Sábado</td><td contenteditable="true"></td></tr>
+          <tr><td>Domingo</td><td contenteditable="true"></td></tr>
+        </tbody>
+      </table>
+      <button id="guardarHorario" class="btn">Guardar Horario</button>
+      <button id="limpiarHorario" class="btn danger">Limpiar</button>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Creado por Alejandro Sánchez Alejo</p>
+  </footer>
+
+  <script type="module" src="./firebase-auth.js"></script>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>

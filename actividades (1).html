@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAS Tracker - Actividades</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Actividades CAS</h1>
+    <nav>
+      <a href="menu.html">Inicio</a>
+      <a href="actividades.html">Actividades</a>
+      <a href="reflexiones.html">Reflexiones</a>
+      <a href="horario.html">Horario</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="formActividad" class="formulario">
+      <input type="text" id="nombre" placeholder="Nombre de la actividad" required>
+      <select id="categoria" required>
+        <option value="">Categoría</option>
+        <option value="C">Creatividad</option>
+        <option value="A">Actividad</option>
+        <option value="S">Servicio</option>
+      </select>
+      <input type="number" id="horas" placeholder="Horas" min="1" required>
+      <input type="date" id="fecha" required>
+      <textarea id="descripcion" placeholder="Descripción breve"></textarea>
+      <button type="submit" class="btn">Guardar Actividad</button>
+    </form>
+
+    <section>
+      <h2>Lista de Actividades</h2>
+      <table id="tablaActividades">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Horas</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Creado por Alejandro Sánchez Alejo</p>
+  </footer>
+
+  <script type="module" src="./firebase-auth.js"></script>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>

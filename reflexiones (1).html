@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAS Tracker - Reflexiones</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/docx@7.2.0/build/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Reflexiones CAS</h1>
+    <nav>
+      <a href="menu.html">Inicio</a>
+      <a href="actividades.html">Actividades</a>
+      <a href="reflexiones.html">Reflexiones</a>
+      <a href="horario.html">Horario</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="formReflexion" class="formulario">
+      <input type="text" id="tituloReflexion" placeholder="Título de la reflexión" required>
+      <div class="textarea-container">
+        <textarea id="textoReflexion" placeholder="Escribe tu reflexión aquí..." rows="5" required></textarea>
+        <div id="wordCount" class="word-counter">0 palabras</div>
+      </div>
+      <button type="submit" class="btn">Guardar Reflexión</button>
+    </form>
+
+    <section>
+      <h2>Mis Reflexiones</h2>
+      <div id="listaReflexiones" class="lista-reflexiones"></div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Creado por Alejandro Sánchez Alejo</p>
+  </footer>
+
+  <script type="module" src="./firebase-auth.js"></script>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>

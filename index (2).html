@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CAS Tracker - Iniciar sesión</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; background:#f4f4f4; }
+    form { background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); display:flex; flex-direction:column; width:300px; }
+    input { margin-bottom:10px; padding:8px; border-radius:5px; border:1px solid #ccc; }
+    button { padding:10px; border:none; background:#007bff; color:#fff; border-radius:5px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+  </style>
+</head>
+<body>
+  <h2>Iniciar Sesión</h2>
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Correo" required><br>
+    <input type="password" id="loginPassword" placeholder="Contraseña" required><br>
+    <button type="submit">Iniciar sesión</button>
+  </form>
+
+  <h3>O registrarse:</h3>
+  <form id="registerForm">
+    <input type="email" id="registerEmail" placeholder="Correo" required><br>
+    <input type="password" id="registerPassword" placeholder="Contraseña" required><br>
+    <button type="submit">Registrarse</button>
+  </form>
+
+  <p id="msg"></p>
+
+  <script type="module">
+    import { auth, db } from "./firebase-app.js";
+    import { 
+      onAuthStateChanged, 
+      signInWithEmailAndPassword, 
+      createUserWithEmailAndPassword 
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const msg = document.getElementById("msg");
+
+    // Redirigir si ya está logueado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "menu.html";
+      }
+    });
+
+    // Login
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        msg.textContent = "✅ Iniciando sesión...";
+        setTimeout(() => window.location.href = "menu.html", 700);
+      } catch (error) {
+        msg.textContent = "❌ Error: " + error.message;
+        console.error(error);
+      }
+    });
+
+    // Registro
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, "usuarios", userCred.user.uid), {
+          email,
+          actividades: [],
+          reflexiones: [],
+          horario: []
+        });
+        msg.textContent = "✅ Usuario registrado. Redirigiendo...";
+        setTimeout(() => window.location.href = "menu.html", 700);
+      } catch (error) {
+        msg.textContent = "❌ Error: " + error.message;
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
